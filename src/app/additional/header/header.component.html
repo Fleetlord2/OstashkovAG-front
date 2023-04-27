@@ -1,0 +1,114 @@
+<div class="header">
+    <div class="nav">
+      <a  [routerLink]="['']" class="logo_wrap">
+        <img
+          src="assets/icons/logo.svg"
+          style="height: 48px; margin-top: auto; margin-bottom: auto; margin-right: 16px;"
+        />
+        <strong nz-typography style="margin-top: 8px;">Активный гражданин<br>Осташкова</strong>
+      </a>
+      <form class="input">
+        <nz-input-group
+          [nzSuffix]="suffixIconSearch"
+          style="height: 32px; margin-top: 16px"
+  
+        >
+          <input type="text" nz-input placeholder="Введите событие"  [(ngModel)]="searchText" name="search"/>
+        </nz-input-group>
+        <ng-template #suffixIconSearch>
+          <span nz-icon nzType="search"></span>
+        </ng-template>
+      </form>
+      <div class="tabs_wrap">
+        <ul
+          nz-menu
+          nzMode="horizontal"
+          style="background-color: transparent; height: 64px"
+        >
+          <li
+            nz-menu-item
+            [nzMatchRouter]="true"
+            [nzMatchRouterExact]="true"
+            style="height: 64px; line-height: 64px"
+          >
+            <a [routerLink]="['events']">Все события</a>
+          </li>
+          <li
+            nz-menu-item
+            [nzMatchRouter]="true"
+            [nzMatchRouterExact]="true"
+            style="height: 64px; line-height: 64px"
+          >
+            <a [routerLink]="['contacts']" style="">Контакты</a>
+          </li>
+          <li
+            nz-menu-item
+            [nzMatchRouter]="true"
+            [nzMatchRouterExact]="true"
+            style="height: 64px; line-height: 64px"
+            *ngIf="isAdmin"
+          >
+            <a [routerLink]="['admin']">Панель админа</a>
+          </li>
+          <li
+            nz-menu-item
+            [nzMatchRouter]="true"
+            [nzMatchRouterExact]="true"
+            style="height: 64px; line-height: 64px;">
+            <nz-avatar [routerLink]="['profile']" nzIcon="user"></nz-avatar>
+          </li>
+        </ul>
+      </div>
+  
+      <button
+        nz-button
+        nzType="text"
+        class="burger-menu-btn"
+        nzBlock
+        (click)="collapseMenu()"
+      >
+        <i nz-icon nzType="menu" nzTheme="outline"></i>
+      </button>
+      <div class="menu-vertical-wrap" [class.collapsed]="isCollapsed">
+        <ul nz-menu nzMode="inline" class="menu-vertical">
+          <li
+            nz-menu-item
+            [nzMatchRouter]="true"
+            [nzMatchRouterExact]="true"
+            (click)="collapseMenu()"
+            style="height: 64px; line-height: 64px"
+          >
+            <a [routerLink]="['events']">Все события</a>
+          </li>
+          <li
+            nz-menu-item
+            [nzMatchRouter]="true"
+            [nzMatchRouterExact]="true"
+            (click)="collapseMenu()"
+            style="height: 64px; line-height: 64px"
+          >
+            <a [routerLink]="['profile']">Личный кабинет</a>
+          </li>
+          <li
+            nz-menu-item
+            [nzMatchRouter]="true"
+            [nzMatchRouterExact]="true"
+            (click)="collapseMenu()"
+            style="height: 64px; line-height: 64px"
+          >
+            <a [routerLink]="['contacts']">Контакты</a>
+          </li>
+          <li
+            nz-menu-item
+            [nzMatchRouter]="true"
+            [nzMatchRouterExact]="true"
+            (click)="collapseMenu()"
+            style="height: 64px; line-height: 64px"
+            *ngIf="isAdmin"
+          >
+            <a [routerLink]="['admin']" >Панель админа</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
