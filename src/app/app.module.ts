@@ -26,6 +26,7 @@ import { NzFormModule } from 'ng-zorro-antd/form';
 import { AdminComponent } from './admin-components/admin/admin.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ContactsComponent } from './components/contacts/contacts.component';
+import { NzCardModule } from 'ng-zorro-antd/card';
 
 registerLocaleData(ru);
 
@@ -54,7 +55,8 @@ registerLocaleData(ru);
     NzCollapseModule,
     NzInputModule,
     NzAvatarModule,
-    NzFormModule
+    NzFormModule,
+    NzCardModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: ru_RU }
