@@ -27,6 +27,10 @@ import { AdminComponent } from './admin-components/admin/admin.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { ContactsComponent } from './components/contacts/contacts.component';
 import { NzCardModule } from 'ng-zorro-antd/card';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { NzUploadModule } from 'ng-zorro-antd/upload';
+
 
 registerLocaleData(ru);
 
@@ -39,7 +43,9 @@ registerLocaleData(ru);
     IndexComponent,
     AdminComponent,
     ProfileComponent,
-    ContactsComponent
+    ContactsComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +62,8 @@ registerLocaleData(ru);
     NzInputModule,
     NzAvatarModule,
     NzFormModule,
-    NzCardModule
+    NzCardModule,
+    NzUploadModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: ru_RU }

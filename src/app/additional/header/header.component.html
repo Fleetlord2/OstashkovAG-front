@@ -51,12 +51,22 @@
             <a [routerLink]="['admin']">Панель админа</a>
           </li>
           <li
+            *ngIf="isLoggedIn"
             nz-menu-item
             [nzMatchRouter]="true"
             [nzMatchRouterExact]="true"
             style="height: 64px; line-height: 64px;">
-            <nz-avatar [routerLink]="['profile']" nzIcon="user"></nz-avatar>
+            <nz-avatar [routerLink]="['profile']" nzIcon="user" ></nz-avatar>
           </li>
+          <li
+          nz-menu-item
+          [nzMatchRouter]="true"
+          [nzMatchRouterExact]="true"
+          style="height: 64px; line-height: 64px"
+          *ngIf="!isLoggedIn"
+        >
+          <a [routerLink]="['login']">Войти</a>
+        </li>
         </ul>
       </div>
   
