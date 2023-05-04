@@ -30,6 +30,8 @@ import { NzCardModule } from 'ng-zorro-antd/card';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
+import { NzCalendarModule } from 'ng-zorro-antd/calendar';
+import { NzListModule } from 'ng-zorro-antd/list';
 
 
 registerLocaleData(ru);
@@ -63,7 +65,9 @@ registerLocaleData(ru);
     NzAvatarModule,
     NzFormModule,
     NzCardModule,
-    NzUploadModule
+    NzUploadModule,
+    NzCalendarModule,
+    NzListModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: ru_RU }

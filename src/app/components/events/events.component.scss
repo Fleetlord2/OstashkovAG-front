@@ -1,0 +1,29 @@
+nz-card {
+    border-radius: 10px;
+}
+.stream {
+    width: 100%;
+    aspect-ratio: 16/9;
+    justify-content: center;
+    background-color: #1890ff;
+}
+.more-button {
+    position: absolute;
+    bottom: 8px; 
+    right: 8px;
+}
+
+@media (max-width:992px) {
+    .more-button {
+        position: static;
+        margin-top: 16px;
+        margin-right: 0;
+        text-align: right;
+    }
+}
+
+@media (max-width: 800px) {
+    h2 {
+        font-size: 28px;
+    }
+  }

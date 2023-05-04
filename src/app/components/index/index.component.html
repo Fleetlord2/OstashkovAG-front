@@ -1,5 +1,83 @@
-<h2 nz-typography>Новости</h2>
-<nz-card>
-    <p>Test</p>
-</nz-card>
-<button nz-button nzShape="round" nzType="primary">Проверка</button>
+<div nz-row [nzGutter]="[0,32]">
+    <div nz-col nzLg="24" nzXs="24" nzSm="24" nzMd="24">
+        <nz-card>
+            <h2 nz-typography>Актуальное событие</h2>
+            <div nz-row [nzGutter]="[16,16]">
+              <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12">
+              <div class="stream"></div>
+              </div>
+              <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12">
+                <div style="display: flex; justify-content: space-between;">
+                  <h3 nz-typography>{{todayEvent.title}}</h3>
+                  <h4 nz-typography style="margin-top: 4px; ">{{todayEvent.timeStart}}-{{todayEvent.timeFinish}}</h4>
+                </div>
+                <span nz-typography><strong style="font-size: 16px;">{{todayEvent.location}}</strong></span>
+                <p nz-typography style="text-align: justify; margin-top: 16px;">{{todayEvent.description}}</p>
+                <div class="more-button">
+                  <button><span>Подробнее</span></button>
+                </div>
+              </div>
+            </div>
+        </nz-card>
+      </div>
+    <div nz-row [nzGutter]="[16,16]">
+  <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="15">
+    <nz-card>
+      <h2 nz-typography>Календарь событий</h2>
+      <nz-calendar
+        [nzFullscreen]="false"
+        (nzSelectChange)="onValueChange($event)"
+        (nzPanelChange)="onPanelChange($event)"
+        [(ngModel)]="date"
+      ></nz-calendar
+    ></nz-card>
+  </div>
+  <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="9">
+        <nz-card>
+            <div style="display:flex; justify-content: space-between;">
+          <h2 nz-typography style="margin-bottom: 4px; margin-top: 0px;">Новости</h2>
+          <a style="margin-top: 12px;">Все новости</a>
+        </div>
+        <div style="overflow: auto; max-height: 294px; margin-bottom: 16px;">
+          <hr style="background: #F0F0F0; height: 1px; border: none;">
+          <div *ngFor="let item of news">
+            <span nz-typography><strong style="font-size: 16px;">{{item.title}}</strong></span>
+            <div style="display:flex; align-items: baseline; margin-top: 4px; margin-bottom: 0;">
+                <p nz-typography style="font-size: 12px;">{{item.date}} </p>
+                <span nz-typography nzType="danger" style="margin-left: 8px; font-size: 12px;"><strong>{{item.type}}</strong></span>
+            </div>
+            <p nz-typography>{{item.description}}</p>
+            <hr style="background: #F0F0F0; height: 1px; border: none;">
+          </div>
+        </div>
+        <a>Предложить новость</a>
+        </nz-card> 
+      </div>
+      <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="24" *ngIf="showEventOnDate(date)">
+        <nz-card class="todayEvent-card">
+          <h2 nz-typography>Событие на {{date.getDate()}}</h2>
+          <div nz-row [nzGutter]="[16,16]">
+            <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12">
+            <div class="stream"></div>
+            </div>
+            <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12">
+              <div style="display: flex; justify-content: space-between;">
+                <h3 nz-typography>{{onDayEvent.title}}</h3>
+                <h4 nz-typography style="margin-top: 4px; ">{{onDayEvent.timeStart}}-{{onDayEvent.timeFinish}}</h4>
+              </div>
+              <span nz-typography><strong style="font-size: 16px;">{{onDayEvent.location}}</strong></span>
+              <p nz-typography style="text-align: justify; margin-top: 16px;">{{onDayEvent.description}}</p>
+              <div class="more-button">
+                <button><span>Подробнее</span></button>
+              </div>
+            </div>
+          </div>
+      </nz-card>
+      </div>
+      <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="24" *ngIf="!showEventOnDate(date)">
+        <nz-card>
+          <h2 nz-typography style="text-align: center;">На этот день нет событий</h2>
+        </nz-card>
+      </div>
+  </div>
+</div>
